@@ -31,7 +31,7 @@ import javax.annotation.Nullable;
 import java.util.List;
 import java.util.Locale;
 
-public abstract class BlockCurtains extends BlockFurniture
+public abstract class BlockCurtains extends BlockFurnitureTile
 {
     public static final PropertyInteger COLOUR = PropertyInteger.create("colour", 0, 15);
     public static final PropertyEnum<Type> TYPE = PropertyEnum.create("type", Type.class);
@@ -210,6 +210,12 @@ public abstract class BlockCurtains extends BlockFurniture
         {
             super.harvestBlock(worldIn, player, pos, state, tileEntity, stack);
         }
+    }
+
+    @Override
+    public TileEntity createNewTileEntity(World worldIn, int meta)
+    {
+        return new TileEntityColoured();
     }
 
     @Override
